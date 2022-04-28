@@ -4,6 +4,7 @@ AUTHOR Mutamba Prince Bulambo
 Student Number 220177767
 Date April 13 2022
  */
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,7 +15,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -26,6 +29,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.assignment2.ui.theme.ASSIGNMENT2Theme
 
 class MainActivity : ComponentActivity() {
@@ -36,7 +40,6 @@ class MainActivity : ComponentActivity() {
                 val visible:MutableState<Boolean> = remember { mutableStateOf(false) }
                 AlertDialogComponent(visible = visible)
 
-
                   var text=Message("Welcome to My Jetpack Compose Journey")
                   main(text)
                 Column(
@@ -46,8 +49,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Image(painter = painterResource(id = R.drawable.photo), contentDescription = null)
                     val context= LocalContext.current
-                    Button(onClick = {
-                        visible.value=true},
+                    Button(onClick = {visible.value=true },
                         shape= CircleShape,
                         contentPadding = PaddingValues(16.dp),
                         border= BorderStroke(10.dp, Color.White),
@@ -63,6 +65,35 @@ class MainActivity : ComponentActivity() {
                         Text(text = "Info",
                             style= MaterialTheme.typography.button,
                             modifier= Modifier.padding(5.dp))
+                    }
+                    Column(
+                        verticalArrangement=Arrangement.Bottom,
+                        horizontalAlignment = Alignment.CenterHorizontally,
+
+                    ) {
+
+
+                        Button(onClick = {
+                            val intent = Intent(this@MainActivity, MainActivity2::class.java)
+                            startActivity(intent)
+                        },
+                            shape = CircleShape,
+                            contentPadding = PaddingValues(16.dp),
+                            border = BorderStroke(10.dp, Color.White),
+                            modifier = Modifier.size(width = 300.dp, height = 60.dp),
+                            colors = ButtonDefaults.textButtonColors(backgroundColor = Color.Blue,
+                                contentColor = Color.White
+                            )
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.Settings,
+                                contentDescription = "Info description",
+                                Modifier.padding(end = 20.dp)
+                            )
+                            Text(text = "Start journey",
+                                style = MaterialTheme.typography.button,
+                                modifier = Modifier.padding(5.dp), fontSize = 15.sp)
+                        }
                     }
 
                 }
