@@ -66,9 +66,86 @@ class MainActivity2 : ComponentActivity() {
                 )
                 {
 
+                    Column(
 
-                    var studentdetalis= StudentDetails("Name: Mutamba Prince Bulambo","Department:Information Technology","Course: Application Development","StudentNumber: 220177767")
-                    Cput(studentdetalis)
+
+                    ) {
+
+
+                        Text(
+                            buildAnnotatedString {
+                                withStyle(style =SpanStyle(color = Color.Blue)) {
+                                    withStyle(style = SpanStyle(color = Color.White,fontSize = 25.sp)) {
+
+                                        append("Name: Mutamba Prince Bulambo\n")
+                                    }
+                                    withStyle(
+                                        style = SpanStyle(
+                                            fontWeight = FontWeight.Bold,
+                                            color = Color.White,
+                                            fontSize = 25.sp
+
+                                        )
+                                    ) {
+
+
+                                        append("\nDepartment:Information Technology\n")
+
+                                    }
+                                    withStyle(
+                                        style = SpanStyle(
+                                            fontWeight = FontWeight.Normal,
+                                            color = Color.White,
+                                            fontSize = 25.sp
+                                        )
+                                    ) {
+                                        append("\nCourse: Application Development\n")
+                                    }
+                                    withStyle(
+                                        style = SpanStyle(
+                                            fontWeight = FontWeight.Medium,
+                                            color = Color.White,
+                                            fontSize = 25.sp
+                                        )
+                                    ) {
+                                        append("\nStudentNumber: 220177767\n")
+                                    }
+
+                                }
+                            }
+                        )
+
+                    }
+                    Column(
+                        Modifier
+
+
+                            .padding(100.dp),
+                        verticalArrangement = Arrangement.spacedBy(24.dp)
+
+                    ) {
+
+                        Button(
+                            onClick = {
+
+                                val intent = Intent(this@MainActivity2, MainActivity3::class.java)
+                                startActivity(intent)
+
+                            },
+                            shape= CircleShape,
+                            contentPadding = PaddingValues(16.dp),
+                            border= BorderStroke(10.dp, Color.White),
+                            modifier = Modifier.size(width = 360.dp,height = 60.dp),
+                            colors = ButtonDefaults.textButtonColors(backgroundColor = Color.Blue, contentColor = Color.White
+                            )
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.Edit,
+                                contentDescription = "Edit",
+                                Modifier.padding(end = 20.dp)
+                            )
+                            Text(text = "current modules", fontSize = 15.sp)
+                        }}
                  Column(
                      verticalArrangement = Arrangement.Bottom,
                      horizontalAlignment = Alignment.CenterHorizontally,
@@ -105,90 +182,11 @@ class MainActivity2 : ComponentActivity() {
 
 
 
+
             }
         }}
 
 
 
 
-data class StudentDetails(var FullName:String,var department:String,var course :String,var StudentNumber:String)
-    @Composable
-    fun Cput(student: StudentDetails) {
-
-        Column(
-
-
-        ) {
-
-
-            Text(
-                buildAnnotatedString {
-                    withStyle(style =SpanStyle(color = Color.Blue)) {
-                        withStyle(style = SpanStyle(color = Color.White,fontSize = 25.sp)) {
-
-                            append("${student.FullName}\n")
-                        }
-                        withStyle(
-                            style = SpanStyle(
-                                fontWeight = FontWeight.Bold,
-                                color = Color.White,
-                                fontSize = 25.sp
-
-                            )
-                        ) {
-
-
-                            append("\n${student.department}\n")
-
-                        }
-                        withStyle(
-                            style = SpanStyle(
-                                fontWeight = FontWeight.Normal,
-                                color = Color.White,
-                                fontSize = 25.sp
-                            )
-                        ) {
-                            append("\n${student.course}\n")
-                        }
-                        withStyle(
-                            style = SpanStyle(
-                                fontWeight = FontWeight.Medium,
-                                color = Color.White,
-                                fontSize = 25.sp
-                            )
-                        ) {
-                            append("\n${student.StudentNumber}")
-                        }
-
-                    }
-                }
-            )
-
-        }
-        Column(
-            Modifier
-
-
-                .padding(100.dp),
-            verticalArrangement = Arrangement.spacedBy(24.dp)
-
-        ) {
-
-            Button(
-                onClick = {},
-                shape= CircleShape,
-                contentPadding = PaddingValues(16.dp),
-                border= BorderStroke(10.dp, Color.White),
-                modifier = Modifier.size(width = 360.dp,height = 60.dp),
-                colors = ButtonDefaults.textButtonColors(backgroundColor = Color.Blue, contentColor = Color.White
-                )
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.Edit,
-                    contentDescription = "Edit",
-                    Modifier.padding(end = 20.dp)
-                )
-                Text(text = "current modules", fontSize = 15.sp)
-            }}
-    }
 
